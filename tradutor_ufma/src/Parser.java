@@ -12,7 +12,7 @@ import java.util.Scanner;
     private void nextToken () {
         currentToken = scan.nextToken();
     }
-    
+
     public void parse () {
         expr();
     }
