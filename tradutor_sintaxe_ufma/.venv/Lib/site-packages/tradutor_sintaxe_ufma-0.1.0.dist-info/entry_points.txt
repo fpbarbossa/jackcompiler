@@ -1,2 +1,0 @@
-[console_scripts]
-tradutor-sintaxe-ufma = tradutor_sintaxe_ufma.__main__:main
