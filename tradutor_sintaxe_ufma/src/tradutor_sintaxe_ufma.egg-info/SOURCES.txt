@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/tradutor_sintaxe_ufma/__init__.py
+src/tradutor_sintaxe_ufma/__main__.py
+src/tradutor_sintaxe_ufma.egg-info/PKG-INFO
+src/tradutor_sintaxe_ufma.egg-info/SOURCES.txt
+src/tradutor_sintaxe_ufma.egg-info/dependency_links.txt
+src/tradutor_sintaxe_ufma.egg-info/entry_points.txt
+src/tradutor_sintaxe_ufma.egg-info/top_level.txt
