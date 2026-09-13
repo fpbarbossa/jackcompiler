@@ -12,7 +12,7 @@ public class Parser {
     }
 
     public void parse () {
-        letStatement();
+         statements();
     }
  
     private void match(TokenType t) {
@@ -68,5 +68,28 @@ public class Parser {
         match(TokenType.SEMICOLON);
     }
 
-    
+    void printStatement () {
+        match(TokenType.PRINT);
+        expr();
+        System.out.println("print");
+        match(TokenType.SEMICOLON);
+    }
+
+    void statement () {
+        if (currentToken.type == TokenType.PRINT) {
+            printStatement();
+        } else if (currentToken.type == TokenType.LET) {
+            letStatement();
+        } else {
+            throw new Error("syntax error");
+        }
+    }
+
+    void statements () {
+        
+        while (currentToken.type != TokenType.EOF) {
+            statement();
+        }
+   }
+
 }

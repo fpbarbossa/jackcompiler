@@ -14,11 +14,13 @@ public class Scanner {
 
 	public Scanner (byte[] input) {
         this.input = input;
+        this.current = 0;
     }
     
     private char peek () {
-        if (current < input.length)
+        if (current < input.length){
            return (char)input[current];
+        }
        return '\0';
     }
 
@@ -63,13 +65,7 @@ public class Scanner {
 
         if (isAlpha(ch)) {
             return identifier();
-}
-
-        if (ch == '0') {
-            advance();
-            return new Token (TokenType.NUMBER, Character.toString(ch));
-        }  else if (Character.isDigit(ch))
-            return number();
+        }
 
         switch (ch) {
                 case '+':
