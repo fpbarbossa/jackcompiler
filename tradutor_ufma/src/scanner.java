@@ -10,6 +10,7 @@ public class Scanner {
     static {
         keywords = new HashMap<>();
         keywords.put("let",    TokenType.LET);
+        keywords.put("print", TokenType.PRINT);
     } 
 
 	public Scanner (byte[] input) {
@@ -67,6 +68,10 @@ public class Scanner {
             return identifier();
         }
 
+        if (Character.isDigit(ch)) {
+            return number();
+        }
+
         switch (ch) {
                 case '+':
                     advance();
@@ -74,6 +79,12 @@ public class Scanner {
                 case '-':
                     advance();
                     return new Token (TokenType.MINUS,"-");
+                case '*':
+                    advance();
+                    return new Token (TokenType.STAR, "*");
+                case '/':
+                    advance();
+                    return new Token (TokenType.SLASH, "/");    
                 case '\0':
                     return new Token (TokenType.EOF,"EOF");
                 case '=':

@@ -1,6 +1,6 @@
 public class Parser {
-        private Scanner scan;
-        private Token currentToken;
+    private Scanner scan;
+    private Token currentToken;
 
     public Parser(byte[] input) {
         scan = new Scanner(input);
@@ -28,15 +28,34 @@ public class Parser {
         oper();
     }
 
-    void term () {
-        if (currentToken.type == TokenType.NUMBER)
-            number();
-        else if (currentToken.type == TokenType.IDENT) {
-            System.out.println("push "+currentToken.lexeme);
-            match(TokenType.IDENT);
+    void term() {
+        factor();
+        termOper();
+    }
+
+    void termOper() {
+        if (currentToken.type == TokenType.STAR) {
+            match(TokenType.STAR);
+            factor();
+            System.out.println("mul");
+            termOper();
+        } else if (currentToken.type == TokenType.SLASH) {
+            match(TokenType.SLASH);
+            factor();
+            System.out.println("div");
+            termOper();
         }
-        else
+    }
+
+    void factor() {
+        if (currentToken.type == TokenType.NUMBER) {
+            number();
+        } else if (currentToken.type == TokenType.IDENT) {
+            System.out.println("push " + currentToken.lexeme);
+            match(TokenType.IDENT);
+        } else {
             throw new Error("syntax error");
+        }
     }
 
     void number () {

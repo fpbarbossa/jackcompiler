@@ -1,10 +1,12 @@
 public enum TokenType {
-    PLUS,MINUS, EQ, SEMICOLON,
+    PLUS,MINUS, STAR, SLASH,EQ, SEMICOLON,
 
      // Literals.
     NUMBER,
 	IDENT,
+
     PRINT,
     LET,
+    
 	EOF;
 }
