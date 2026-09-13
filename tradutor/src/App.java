@@ -1,8 +1,5 @@
-public class Main {
+public class App {
     public static void main(String[] args) throws Exception {
-        String input = "8+5-7+9";
-        Parser p = new Parser (input.getBytes());
-        p.parse();
-
+        System.out.println("Hello, World!");
     }
 }
