@@ -32,8 +32,8 @@ public class Scanner {
         keywords.put("else", TokenType.ELSE);
         keywords.put("while", TokenType.WHILE);
         keywords.put("return", TokenType.RETURN);
-}
-    } 
+    }
+     
 
 	public Scanner (byte[] input) {
         this.input = input;
@@ -115,6 +115,45 @@ public class Scanner {
                 case ';':
                     advance();
                     return new Token (TokenType.SEMICOLON,";");
+                case '.': 
+                    advance(); 
+                    return new Token(TokenType.DOT, ".");
+                case '&': 
+                    advance(); 
+                    return new Token(TokenType.AND, "&");
+                case '|': 
+                    advance(); 
+                    return new Token(TokenType.OR, "|");
+                case '~': 
+                    advance(); 
+                    return new Token(TokenType.NOT, "~");
+                case '>': 
+                    advance(); 
+                    return new Token(TokenType.GT, ">");
+                case '<': 
+                    advance(); 
+                    return new Token(TokenType.LT, "<");
+                case '(': 
+                    advance(); 
+                    return new Token(TokenType.LPAREN, "(");
+                case ')': 
+                    advance(); 
+                    return new Token(TokenType.RPAREN, ")");
+                case '{': 
+                    advance(); 
+                    return new Token(TokenType.LBRACE, "{");
+                case '}': 
+                    advance(); 
+                    return new Token(TokenType.RBRACE, "}");
+                case '[': 
+                    advance(); 
+                    return new Token(TokenType.LBRACKET, "[");
+                case ']': 
+                    advance(); 
+                    return new Token(TokenType.RBRACKET, "]");
+                case ',': 
+                    advance(); 
+                    return new Token(TokenType.COMMA, ",");
                 default:
                      throw new Error("lexical error at " + ch);
         }

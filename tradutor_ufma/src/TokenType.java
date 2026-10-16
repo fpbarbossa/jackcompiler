@@ -1,7 +1,7 @@
 public enum TokenType {
     // symbols
     LPAREN, RPAREN, LBRACE, RBRACE, LBRACKET, RBRACKET,
-    COMMA, SEMICOLON, DOT, PLUS, MINUS, ASTERISK, SLASH,
+    COMMA, SEMICOLON, DOT, PLUS, MINUS, SLASH,
     AND, OR, NOT, LT, GT, EQ, PRINT, STAR,
 
     // literals
