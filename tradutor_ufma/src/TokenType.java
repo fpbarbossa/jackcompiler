@@ -1,12 +1,16 @@
 public enum TokenType {
-    PLUS,MINUS, STAR, SLASH,EQ, SEMICOLON,
+    // symbols
+    LPAREN, RPAREN, LBRACE, RBRACE, LBRACKET, RBRACKET,
+    COMMA, SEMICOLON, DOT, PLUS, MINUS, ASTERISK, SLASH,
+    AND, OR, NOT, LT, GT, EQ, PRINT, STAR,
 
-     // Literals.
-    NUMBER,
-	IDENT,
+    // literals
+    NUMBER, IDENT, STRING,
 
-    PRINT,
-    LET,
-    
-	EOF;
+    // keywords
+    CLASS, CONSTRUCTOR, FUNCTION, METHOD, FIELD, STATIC, VAR,
+    INT, CHAR, BOOLEAN, VOID, TRUE, FALSE, NULL, THIS,
+    LET, DO, IF, ELSE, WHILE, RETURN,
+
+    EOF
 }
