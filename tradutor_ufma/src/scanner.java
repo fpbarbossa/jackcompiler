@@ -84,7 +84,12 @@ public class Scanner {
     String s = new String(input, start, current - start, StandardCharsets.UTF_8);
     advance();              
     return new Token(TokenType.STRING, s);
-}
+    }
+
+    private char peekNext() {
+    int next = current + 1;
+    return next < input.length ? (char) input[next] : '\0';
+    }
 
     private void skipWhitespace() {
         char ch = peek();
@@ -107,7 +112,18 @@ public class Scanner {
         }
 
         switch (ch) {
-                case '"':
+                case '/':
+                    if (peekNext() == '/') {
+                        skipLineComments();
+                        return nextToken();    
+                    } else if (peekNext() == '*') {
+                        skipBlockComments();
+                        return nextToken();
+                    } else {
+                        advance();
+                        return new Token(TokenType.SLASH, "/");
+                    }
+                        case '"':
                     return string();
                 case '+':
                     advance();
@@ -117,10 +133,7 @@ public class Scanner {
                     return new Token (TokenType.MINUS,"-");
                 case '*':
                     advance();
-                    return new Token (TokenType.STAR, "*");
-                case '/':
-                    advance();
-                    return new Token (TokenType.SLASH, "/");    
+                    return new Token (TokenType.STAR, "*");  
                 case '\0':
                     return new Token (TokenType.EOF,"EOF");
                 case '=':
@@ -181,6 +194,22 @@ public class Scanner {
         TokenType type = keywords.get(id);
         if (type == null) type = TokenType.IDENT;
         return new Token(type, id);
+    }
+
+    private void skipLineComments() {
+    while (peek() != '\n' && peek() != '\0') advance();
+    }
+
+    private void skipBlockComments() {
+        advance(); advance();   // consome '/' e '*'
+        while (true) {
+            if (peek() == '\0') throw new Error("comentário de bloco não fechado");
+            if (peek() == '*' && peekNext() == '/') {
+                advance(); advance();
+                return;
+            }
+            advance();
+        }
     }
 
 }
