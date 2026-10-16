@@ -1,3 +1,4 @@
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,6 +75,17 @@ public class Scanner {
         return new Token(TokenType.NUMBER, n);
     }
 
+    private Token string() {
+    advance();              
+    int start = current;
+    while (peek() != '"' && peek() != '\0') {
+        advance();
+    }
+    String s = new String(input, start, current - start, StandardCharsets.UTF_8);
+    advance();              
+    return new Token(TokenType.STRING, s);
+}
+
     private void skipWhitespace() {
         char ch = peek();
         while (ch == ' ' || ch == '\r' || ch == '\t' || ch == '\n') {
@@ -95,6 +107,8 @@ public class Scanner {
         }
 
         switch (ch) {
+                case '"':
+                    return string();
                 case '+':
                     advance();
                     return new Token (TokenType.PLUS,"+");
