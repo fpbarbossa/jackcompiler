@@ -8,5 +8,7 @@ public enum TokenType {
     PRINT,
     LET,
     
-	EOF;
+	EOF,
+
+    TESTE;
 }
