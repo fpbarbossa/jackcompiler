@@ -53,6 +53,10 @@ public class Parser {
         } else if (currentToken.type == TokenType.IDENT) {
             System.out.println("push " + currentToken.lexeme);
             match(TokenType.IDENT);
+        } else if (currentToken.type == TokenType.LPAREN) { // Suporte a ( expr )
+            match(TokenType.LPAREN);
+            expr();
+            match(TokenType.RPAREN);
         } else {
             throw new Error("syntax error");
         }

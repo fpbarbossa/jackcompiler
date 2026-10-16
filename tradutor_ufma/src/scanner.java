@@ -10,8 +10,6 @@ public class Scanner {
  
     static {
         keywords = new HashMap<>();
-        keywords.put("let",    TokenType.LET);
-        keywords.put("print", TokenType.PRINT);
         keywords.put("class", TokenType.CLASS);
         keywords.put("constructor", TokenType.CONSTRUCTOR);
         keywords.put("function", TokenType.FUNCTION);
